@@ -22,17 +22,17 @@ export default new Router({
         {
             path: '/cnodejs',
             name: 'cnodejs',
-            component: () => import(/* webpackChunkName: "about" */ './views/Cnodejs.vue')
+            component: () => import(/* webpackChunkName: "cnodejs" */ './views/Cnodejs.vue')
         },
         {
             path: '/cnodejs-vuex',
             name: 'cnodejs-vuex',
-            component: () => import(/* webpackChunkName: "about" */ './views/Cnodejs-vuex.vue')
+            component: () => import(/* webpackChunkName: "cnodejs-vuex" */ './views/Cnodejs-vuex.vue')
         },
         {
             path: '/cnodejs/view/:id',
             name: 'cnodejs-view',
-            component: () => import(/* webpackChunkName: "about" */ './views/Cnodejs-view.vue')
+            component: () => import(/* webpackChunkName: "cnodejs-view" */ './views/Cnodejs-view.vue')
         }
     ]
 })

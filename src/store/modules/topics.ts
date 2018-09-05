@@ -1,16 +1,5 @@
 import api from '@/api'
-
-export interface TopicItem {
-    id: string
-    title: string
-    [propName: string]: any
-}
-
-export interface TopicsState {
-    data: Array<TopicItem>
-    page: number
-    path: string
-}
+import { TopicsState, TopicItem } from '@/interface'
 
 const state = {
     data: [],

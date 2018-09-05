@@ -1,14 +1,16 @@
 <template>
-    <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png">
-        <div class="lists">
-            <ul>
+    <div class="router-cnodejs cnodejs-vuex">
+        <loading v-if="loading"></loading>
+        <template v-else>
+            <ul class="topics">
                 <li v-for="(item, index) in topics.data" :key="index">
                     <router-link :to="`/cnodejs/view/${item.id}`">{{ item.title }}</router-link>
                 </li>
             </ul>
-        </div>
-        <div class="page"><a @click="handleLoadMore" href="javascript:;">加载更多...</a></div>
+            <div class="pages">
+                <a @click="handleLoadMore" href="javascript:;">加载更多...</a>
+            </div>
+        </template>
     </div>
 </template>
 
@@ -16,19 +18,27 @@
 import { Component, Vue, Mixins } from 'vue-property-decorator'
 import { Getter, Action, namespace } from 'vuex-class'
 import { MyMixin } from '@/mixins'
+import { TopicsState } from '@/interface'
+
+import loading from '@/components/loading.vue'
 
 const Topics = namespace('topics')
 
 @Component({
-    components: {}
+    components: {
+        loading
+    }
 })
 export default class CnodejsVuex extends Mixins(MyMixin) {
+    loading: boolean = false
     @Topics.Action('getTopics')
     getTopics!: Function
     @Topics.Getter('getTopics')
-    topics!: any
+    topics!: TopicsState
     async mounted() {
+        this.loading = true
         await this.getTopics({})
+        this.loading = false
         await this.$nextTick()
         this.scrollTo()
     }
@@ -37,13 +47,3 @@ export default class CnodejsVuex extends Mixins(MyMixin) {
     }
 }
 </script>
-<style lang="less">
-.lists {
-    width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-}
-.page {
-    text-align: center;
-}
-</style>

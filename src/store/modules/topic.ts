@@ -1,18 +1,9 @@
 import api from '@/api'
-import { TopicItem } from './topics'
-
-export interface TopicState {
-    data: TopicItem
-    path: string
-}
+import { TopicState, getTopicConfig } from '@/interface'
 
 const state = {
     data: {},
     path: ''
-}
-
-interface getTopicConfig {
-    id: number
 }
 
 const actions = {

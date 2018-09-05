@@ -1,38 +1,50 @@
 <template>
-    <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png">
-        <div class="views" v-html="topic.data.content"></div>
+    <div class="router-view cnodejs-view">
+        <loading v-if="loading"></loading>
+        <template v-else>
+            <div class="header">{{ topic.data.title }}
+                <a href="javascript:;" @click="$router.go(-1)">返回列表</a>
+            </div>
+            <div class="content" v-html="topic.data.content"></div>
+            <div class="views">
+                <div v-for="(item, index) in topic.data.replies" :key="index" class="view-item">
+                    <div class="view-header">
+                        <b>{{ item.author.loginname }}</b>
+                        <span>{{ item.create_at }}</span>
+                    </div>
+                    <div class="view-content" v-html="item.content"></div>
+                </div>
+            </div>
+        </template>
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import { Getter, Action, namespace } from 'vuex-class'
+import { TopicState } from '@/interface'
+
+import loading from '@/components/loading.vue'
 
 const Topic = namespace('topic')
 
 @Component({
-    components: {}
+    components: {
+        loading
+    }
 })
 export default class CnodejsView extends Vue {
+    loading: boolean = false
     @Topic.Action('getTopic')
     getTopic!: Function
     @Topic.Getter('getTopic')
-    topic!: Object
+    topic!: TopicState
     async mounted() {
-        this.getTopic({
+        this.loading = true
+        await this.getTopic({
             id: this.$route.params.id
         })
+        this.loading = false
     }
 }
 </script>
-<style lang="less">
-.views {
-    width: 1200px;
-    margin: 0 auto;
-    text-align: left;
-    img {
-        max-width: 100%;
-    }
-}
-</style>

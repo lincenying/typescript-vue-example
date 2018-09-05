@@ -1,13 +1,13 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/logo.png">
+        <img alt="Vue logo" src="../assets/images/logo.png">
         <HelloWorld :msg="msg" text="12345" @reset-msg="resetMsg" />
     </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import HelloWorld from '@/components/HelloWorld.vue' // @ is an alias to /src
+import HelloWorld from '@/components/hello-world.vue' // @ is an alias to /src
 
 // Register the router hooks with their names
 Component.registerHooks([

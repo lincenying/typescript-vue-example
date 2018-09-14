@@ -1,5 +1,18 @@
 @import '_reset.less';
 
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
+}
+.red.blue {
+    color: yellow
+}
+.blue.red {
+    color: green;
+}
+
 #vueg-background {
     padding-top: 80px;
     box-sizing: border-box;
@@ -21,6 +34,7 @@
     width: 100vw;
     margin-bottom: 20px;
     background: #54d9e0;
+    z-index: 2;
     .nav-block {
         display: flex;
         align-items: center;
@@ -116,6 +130,10 @@
             .view-content {
                 img {
                     max-width: 100%;
+                }
+                code {
+                    white-space: pre-wrap;
+                    word-wrap: break-word;
                 }
             }
         }

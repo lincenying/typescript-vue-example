@@ -1,7 +1,26 @@
 <template>
     <div class="home">
-        <img alt="Vue logo" src="../assets/images/logo.png">
-        <HelloWorld :msg="msg" text="12345" @reset-msg="resetMsg" />
+        <img ref="logo" alt="Vue logo" src="../assets/images/logo.png">
+        <HelloWorld ref="helloword" :msg="msg" text="12345" @reset-msg="resetMsg" />
+        <div class="red blue">red blue</div>
+        <div class="blue red">blue red</div>
+        <pre>
+.red {
+    color: red;
+}
+.blue {
+    color: blue;
+}
+.red.blue {
+    color: yellow
+}
+.blue.red {
+    color: green;
+}
+&lt;div class="red blue"&gt;red blue&lt;/div&gt;
+&lt;div class="blue red"&gt;blue red&lt;/div&gt;
+        </pre>
+        <div>为什么上面两个div都绿色字体?</div>
     </div>
 </template>
 
@@ -22,11 +41,18 @@ Component.registerHooks([
     }
 })
 export default class Home extends Vue {
+    // refs 的用法
+    $refs!: {
+        logo: HTMLElement
+        helloword: HelloWorld
+    }
     msg: string = '123'
     mounted() {
         setTimeout(() => {
             this.msg = '234'
         }, 3000)
+        console.log(this.$refs.logo.getAttribute('src'))
+        console.log(this.$refs.helloword)
     }
     resetMsg(msg: string) {
         this.msg = msg

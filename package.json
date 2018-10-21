@@ -70,6 +70,10 @@
       "vue-cli-service lint",
       "git add"
     ],
+    "*.tsx": [
+      "vue-cli-service lint",
+      "git add"
+    ],
     "*.js": [
       "vue-cli-service lint",
       "git add"

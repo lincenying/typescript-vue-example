@@ -20,7 +20,7 @@ export class MyMixin extends Vue {
     beforeRouteLeave(to: any, from: any, next: Function): void {
         const scrollTop: number = Math.max(
             window.pageYOffset,
-            document.documentElement.scrollTop,
+            document.documentElement!.scrollTop,
             document.body.scrollTop
         )
         const path: string = from.path

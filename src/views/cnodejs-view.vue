@@ -35,8 +35,10 @@ const Topic = namespace('topic')
 })
 export default class CnodejsView extends Vue {
     loading: boolean = false
+    // vuex action 的用法 => this.getTopic()
     @Topic.Action('getTopic')
     getTopic!: Function
+    // vuex getter 的用法 => this.topic
     @Topic.Getter('getTopic')
     topic!: TopicState
     async mounted() {

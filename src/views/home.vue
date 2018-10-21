@@ -2,6 +2,7 @@
     <div class="home">
         <img ref="logo" alt="Vue logo" src="../assets/images/logo.png">
         <HelloWorld ref="helloword" :msg="msg" text="12345" @reset-msg="resetMsg" />
+        <tsx-demo></tsx-demo>
         <div class="red blue">red blue</div>
         <div class="blue red">blue red</div>
         <pre>
@@ -25,8 +26,10 @@
 </template>
 
 <script lang="ts">
+import { Route } from 'vue-router'
 import { Component, Vue } from 'vue-property-decorator'
 import HelloWorld from '@/components/hello-world.vue' // @ is an alias to /src
+import tsxDemo from '@/components/tsx-demo.tsx' // @ is an alias to /src
 
 // Register the router hooks with their names
 Component.registerHooks([
@@ -37,7 +40,8 @@ Component.registerHooks([
 
 @Component({
     components: {
-        HelloWorld
+        HelloWorld,
+        tsxDemo
     }
 })
 export default class Home extends Vue {
@@ -58,12 +62,12 @@ export default class Home extends Vue {
         this.msg = msg
     }
     // lifecycle hook
-    beforeRouteEnter(to: any, from: any, next: Function): void {
+    beforeRouteEnter(to: Route, from: Route, next: Function): void {
         console.log('beforeRouteEnter')
         next()
     }
 
-    beforeRouteLeave(to: any, from: any, next: Function): void {
+    beforeRouteLeave(to: Route, from: Route, next: Function): void {
         console.log('beforeRouteLeave')
         next()
     }

@@ -2,15 +2,12 @@
     <div class="router-view cnodejs-view">
         <loading v-if="loading"></loading>
         <template v-else>
-            <div class="header">{{ topic.data.title }}
-                <a href="javascript:;" @click="$router.go(-1)">返回列表</a>
-            </div>
+            <div class="header">{{ topic.data.title }} <a href="javascript:;" @click="$router.go(-1)">返回列表</a></div>
             <div class="content" v-html="topic.data.content"></div>
             <div class="views">
                 <div v-for="(item, index) in topic.data.replies" :key="index" class="view-item">
                     <div class="view-header">
-                        <b>{{ item.author.loginname }}</b>
-                        <span>{{ item.create_at }}</span>
+                        <b>{{ item.author.loginname }}</b> <span>{{ item.create_at }}</span>
                     </div>
                     <div class="view-content" v-html="item.content"></div>
                 </div>

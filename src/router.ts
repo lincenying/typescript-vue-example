@@ -36,5 +36,6 @@ const routes: RouteConfig[] = [
 ]
 
 export default new Router({
+    mode: 'history',
     routes
 })

@@ -1,5 +1,5 @@
 module.exports = {
-    baseUrl: process.env.NODE_ENV === 'production' ? '/typescript-vue-example/' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? '/typescript-vue-example/' : '/',
     configureWebpack: {
         devtool: 'source-map'
     },

@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <img ref="logo" alt="Vue logo" src="../assets/images/logo.png">
+        <img ref="logo" alt="Vue logo" src="../assets/images/logo.png" />
         <HelloWorld ref="helloword" :msg="msg" text="12345" @reset-msg="resetMsg" />
         <tsx-demo :msg="msg"></tsx-demo>
         <div class="red blue">red blue</div>

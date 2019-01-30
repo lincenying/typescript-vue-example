@@ -7,8 +7,8 @@
         <p><a @click="handleConsole" href="javascript:;">点我打印</a></p>
         <p><a @click="resetMsg('msg变化了')" href="javascript:;">点我Emit</a></p>
         <p>
-            For guide and recipes on how to configure / customize this project,<br> check out the
-            <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
+            For guide and recipes on how to configure / customize this project,<br />
+            check out the <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
         </p>
     </div>
 </template>

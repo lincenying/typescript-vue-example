@@ -7,9 +7,7 @@
                     <router-link :to="`/cnodejs/view/${item.id}`">{{ item.title }}</router-link>
                 </li>
             </ul>
-            <div class="pages">
-                <a @click="handleLoadMore" href="javascript:;">加载更多...</a>
-            </div>
+            <div class="pages"><a @click="handleLoadMore" href="javascript:;">加载更多...</a></div>
         </template>
     </div>
 </template>

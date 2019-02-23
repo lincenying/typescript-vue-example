@@ -23,8 +23,10 @@ export default class HelloWorld extends Vue {
     // prop
     @Prop()
     private msg: any
+    // prop 限制数据类型
     @Prop([String, Boolean])
     private text!: string | boolean
+    // prop 默认值
     @Prop({ default: 'default value' })
     private text2!: string
     // watch

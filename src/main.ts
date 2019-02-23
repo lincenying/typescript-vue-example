@@ -5,8 +5,11 @@ import App from '@/App.vue'
 import router from '@/router'
 import store from '@/store'
 import { oc } from '@/utils'
+import VueBus from '@/event-bus'
 
 Vue.config.productionTip = false
+
+Vue.use(VueBus)
 
 sync(store, router)
 

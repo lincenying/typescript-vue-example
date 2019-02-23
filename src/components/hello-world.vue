@@ -4,6 +4,7 @@
         <h4>{{ text }}</h4>
         <h6>{{ text2 }}</h6>
         <p>{{ computedMsg }}</p>
+        <p><a @click="busInteraction" href="javascript:;">点我进行事件总线交互</a></p>
         <p><a @click="handleConsole" href="javascript:;">点我打印</a></p>
         <p><a @click="resetMsg('msg变化了')" href="javascript:;">点我Emit</a></p>
         <p>
@@ -41,6 +42,9 @@ export default class HelloWorld extends Vue {
     // method
     handleConsole(): void {
         console.log('console: ' + this.msg)
+    }
+    busInteraction(): void {
+        this.$bus.emit('reset-bus', '这是新的bus文本 - ' + new Date().getTime())
     }
     // emit
     @Emit('reset-msg')

@@ -1,6 +1,7 @@
 <template>
     <div class="home">
         <img ref="logo" alt="Vue logo" src="../assets/images/logo.png" />
+        <div>Bus文本: {{ busMsg }}</div>
         <HelloWorld ref="helloword" :msg="msg" text="12345" @reset-msg="resetMsg" />
         <tsx-demo :msg="msg"></tsx-demo>
         <div class="red blue">red blue</div>
@@ -51,15 +52,20 @@ export default class Home extends Vue {
         helloword: HelloWorld
     }
     msg: string = '123'
+    busMsg: string = '默认的bus文本'
     mounted() {
         setTimeout(() => {
             this.msg = '234'
         }, 3000)
         console.log(this.$refs.logo.getAttribute('src'))
         console.log(this.$refs.helloword)
+        this.$bus.on('reset-bus', this.busInteraction)
     }
     resetMsg(msg: string) {
         this.msg = msg
+    }
+    busInteraction(busMsg: string) {
+        this.busMsg = busMsg
     }
     // lifecycle hook
     beforeRouteEnter(to: Route, from: Route, next: Function): void {

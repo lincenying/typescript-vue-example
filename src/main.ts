@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import { sync } from 'vuex-router-sync'
+import antDesign from '@/ant-design'
 
 import App from '@/App.vue'
 import router from '@/router'
@@ -10,6 +11,7 @@ import VueBus from '@/event-bus'
 Vue.config.productionTip = false
 
 Vue.use(VueBus)
+Vue.use(antDesign)
 
 sync(store, router)
 

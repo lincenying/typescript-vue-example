@@ -44,6 +44,7 @@ export default class HelloWorld extends Vue {
         console.log('console: ' + this.msg)
     }
     busInteraction(): void {
+        this.$message.success('你操作了bus')
         this.$bus.emit('reset-bus', '这是新的bus文本 - ' + new Date().getTime())
     }
     // emit

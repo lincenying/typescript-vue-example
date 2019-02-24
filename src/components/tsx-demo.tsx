@@ -22,9 +22,15 @@ export default class tsxDemo extends Vue {
                 <p>{this.text}</p>
                 <p>这个是来自Prop: {this.msg}</p>
                 <p>当前计数: {this.total}</p>
-                <button onClick={this.busInteraction}>点我进行事件总线交互</button>
-                <button onClick={this.handleAdd}>点我加1</button>
-                <button onClick={this.handleSubtract}>点我减1</button>
+                <a-button onClick={this.busInteraction} type="primary">
+                    点我进行事件总线交互
+                </a-button>{' '}
+                <a-button onClick={this.handleAdd} type="primary">
+                    点我加1
+                </a-button>{' '}
+                <a-button onClick={this.handleSubtract} type="primary">
+                    点我减1
+                </a-button>
             </div>
         )
     }

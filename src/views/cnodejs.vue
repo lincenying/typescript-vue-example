@@ -7,7 +7,10 @@
                     <router-link :to="`/cnodejs/view/${item.id}`">{{ item.title }}</router-link>
                 </li>
             </ul>
-            <div class="pages"><a @click="handleLoadMore" href="javascript:;">加载更多...</a></div>
+            <div class="pages">
+                <a-spin v-if="spinning" />
+                <a v-else @click="handleLoadMore" href="javascript:;">加载更多...</a>
+            </div>
         </template>
     </div>
 </template>
@@ -30,6 +33,7 @@ export default class Cnodejs extends Mixins(MyMixin) {
     lists: any[] = []
     page: number = 1
     loading: boolean = false
+    spinning: boolean = false
     async mounted() {
         await this.getTopics()
         await this.$nextTick()
@@ -53,8 +57,10 @@ export default class Cnodejs extends Mixins(MyMixin) {
             }
         }
     }
-    handleLoadMore() {
-        this.getTopics()
+    async handleLoadMore() {
+        this.spinning = true
+        await this.getTopics()
+        this.spinning = false
     }
 }
 </script>

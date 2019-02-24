@@ -7,7 +7,10 @@
                     <router-link :to="`/cnodejs/view/${item.id}`">{{ item.title }}</router-link>
                 </li>
             </ul>
-            <div class="pages"><a @click="handleLoadMore" href="javascript:;">加载更多...</a></div>
+            <div class="pages">
+                <a-spin v-if="spinning" />
+                <a v-else @click="handleLoadMore" href="javascript:;">加载更多...</a>
+            </div>
         </template>
     </div>
 </template>
@@ -29,6 +32,7 @@ const Topics = namespace('topics')
 })
 export default class CnodejsVuex extends Mixins(MyMixin) {
     loading: boolean = false
+    spinning: boolean = false
     // vuex action 的用法 => this.getTopics()
     @Topics.Action('getTopics')
     getTopics!: Function
@@ -42,8 +46,10 @@ export default class CnodejsVuex extends Mixins(MyMixin) {
         await this.$nextTick()
         this.scrollTo()
     }
-    handleLoadMore() {
-        this.getTopics({ page: this.topics.page + 1 })
+    async handleLoadMore() {
+        this.spinning = true
+        await this.getTopics({ page: this.topics.page + 1 })
+        this.spinning = false
     }
 }
 </script>

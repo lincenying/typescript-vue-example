@@ -1,4 +1,4 @@
-import { Button, message } from 'ant-design-vue'
+import { Button, Spin, message } from 'ant-design-vue'
 
 const install = (Vue: any) => {
     // if (install.installed) {
@@ -6,6 +6,7 @@ const install = (Vue: any) => {
     // }
 
     Vue.component(Button.name, Button)
+    Vue.component(Spin.name, Spin)
 
     Vue.prototype.$message = message
 }

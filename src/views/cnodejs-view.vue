@@ -39,6 +39,7 @@ export default class CnodejsView extends Vue {
     @Topic.Getter('getTopic')
     topic!: TopicState
     async mounted() {
+        window.scrollTo(0, 0)
         this.loading = true
         await this.getTopic({
             id: this.$route.params.id

@@ -1,9 +1,10 @@
 import { Button, Spin, message } from 'ant-design-vue'
 
 const install = (Vue: any) => {
-    // if (install.installed) {
-    //     return
-    // }
+    if ((<any>install).installed) {
+        return
+    }
+    ;(<any>install).installed = true
 
     Vue.component(Button.name, Button)
     Vue.component(Spin.name, Spin)

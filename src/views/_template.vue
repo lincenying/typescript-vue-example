@@ -85,8 +85,41 @@ export default class Template extends Vue {
         console.log('console: ' + this.msg)
     }
     // Lifecycle Hooks
+    // 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前被调用
+    beforeCreate(): void {
+        console.log('beforeCreate')
+    }
+    // 在挂载开始之前被调用：相关的 render 函数首次被调用
+    beforeMount(): void {
+        console.log('beforeMount')
+    }
+    // 数据更新时调用，发生在虚拟 DOM 打补丁之前
+    beforeUpdate(): void {
+        console.log('beforeUpdate')
+    }
+    // 由于数据更改导致的虚拟 DOM 重新渲染和打补丁，在这之后会调用该钩子
+    updated(): void {
+        console.log('updated')
+    }
+    // keep-alive 组件激活时调用
+    activated(): void {
+        console.log('activated')
+    }
+    // keep-alive 组件停用时调用
+    deactivated(): void {
+        console.log('deactivated')
+    }
+    // 实例销毁之前调用
     beforeDestroy(): void {
         window.removeEventListener('scroll', this.handleConsole)
+    }
+    // Vue 实例销毁后调用
+    destroyed(): void {
+        console.log('destroyed')
+    }
+    // 当捕获一个来自子孙组件的错误时被调用
+    errorCaptured(): void {
+        console.log('errorCaptured')
     }
     // Route Hooks
     beforeRouteEnter(to: Route, from: Route, next: Function): void {

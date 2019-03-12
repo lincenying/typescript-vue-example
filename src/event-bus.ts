@@ -1,4 +1,4 @@
-function VueBus(Vue: any) {
+const install = (Vue: any) => {
     const bus = new Vue({
         data: {
             default: {}
@@ -36,4 +36,6 @@ function VueBus(Vue: any) {
         }
     })
 }
-export default VueBus
+export default {
+    install
+}

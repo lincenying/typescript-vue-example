@@ -11,4 +11,6 @@ const install = (Vue: any) => {
 
     Vue.prototype.$message = message
 }
-export default install
+export default {
+    install
+}
